@@ -1,58 +1,69 @@
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
-
-<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.control.Tooltip?>
-<BorderPane fx:id="mainBorderPane" fx:controller="com.dey.todolist.Controller"
-            xmlns:fx="http://javafx.com/fxml">
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="mainBorderPane" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dey.todolist.Controller">
     <top>
         <VBox>
-            <MenuBar>
+            <MenuBar blendMode="DIFFERENCE" cache="true">
                 <Menu text="File">
-                    <MenuItem text="New Task" onAction="#showNewItemDialog"/>
-                    <SeparatorMenuItem/>
-                    <MenuItem text="Exit" onAction="#handleExit"/>
+                    <MenuItem onAction="#showNewItemDialog" text="New Task" />
+                    <SeparatorMenuItem />
+                    <MenuItem onAction="#handleExit" text="Exit" />
                 </Menu>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
             </MenuBar>
-            <ToolBar>
-                <ToggleButton fx:id="filterToggleButton" text="Today's Tasks" onAction="#handleFilterButton">
+            <ToolBar blendMode="DARKEN">
+                <ToggleButton fx:id="filterToggleButton" blendMode="RED" contentDisplay="RIGHT" onAction="#handleFilterButton" text="Today's Tasks" textAlignment="CENTER">
                     <tooltip>
-                        <Tooltip text="Button Down: Show Today's Items only. Button Up: Show all items"/>
+                        <Tooltip text="Button Down: Show Today's Items only. Button Up: Show all items" />
                     </tooltip>
+               <font>
+                  <Font size="14.0" />
+               </font>
                 </ToggleButton>
             </ToolBar>
         </VBox>
     </top>
     <left>
-        <ListView fx:id="toDoListView" onKeyPressed="#handleKeyPressed"> </ListView>
+        <ListView fx:id="toDoListView" blendMode="MULTIPLY" onKeyPressed="#handleKeyPressed"> </ListView>
     </left>
     <center>
         <VBox style="-fx-background-color: white">
-            <TextArea fx:id="itemDetailsTextArea" VBox.vgrow="ALWAYS" wrapText="true">
+            <TextArea fx:id="itemDetailsTextArea" blendMode="EXCLUSION" wrapText="true" VBox.vgrow="ALWAYS">
                 <font>
-                    <Font name="Arial" size="16"/>
+                    <Font name="Arial" size="16" />
                 </font>
             </TextArea>
             <HBox>
                 <Label text="Due: ">
                     <font>
-                        <Font name="Arial bold" size="20"/>
+                        <Font name="Arial bold" size="20" />
                     </font>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
                 </Label>
                 <Label fx:id="deadlineLabel">
                     <font>
-                        <Font name="Arial bold" size="20"/>
+                        <Font name="Arial bold" size="20" />
                     </font>
                 </Label>
             </HBox>
